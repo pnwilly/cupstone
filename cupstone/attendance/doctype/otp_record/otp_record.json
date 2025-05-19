@@ -1,0 +1,70 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-05-18 21:49:33.814154",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "token",
+  "member_id",
+  "otp",
+  "is_verified",
+  "expires_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "token",
+   "fieldtype": "Link",
+   "label": "Token",
+   "options": "Check-In Token"
+  },
+  {
+   "fieldname": "member_id",
+   "fieldtype": "Data",
+   "label": "Member ID"
+  },
+  {
+   "fieldname": "otp",
+   "fieldtype": "Data",
+   "label": "OTP"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_verified",
+   "fieldtype": "Check",
+   "label": "Is Verified"
+  },
+  {
+   "fieldname": "expires_at",
+   "fieldtype": "Datetime",
+   "label": "Expires At"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-05-18 21:49:33.814154",
+ "modified_by": "Administrator",
+ "module": "Attendance",
+ "name": "OTP Record",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

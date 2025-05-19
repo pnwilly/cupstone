@@ -242,3 +242,10 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+scheduler_events = {
+    "cron": {
+        "*/5 * * * *": [
+            "cupstone.attendance.utils.token_generator.generate_checkin_token"
+        ]
+    }
+}

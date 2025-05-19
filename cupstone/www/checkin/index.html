@@ -1,0 +1,38 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<h2>Scan to Check In</h2>
+<p>This QR code is valid for 5 minutes.</p>
+
+<img src="{{ qr_image }}" alt="QR Code" width="250" height="250">
+
+<p>QR code expires in: <span id="countdown">Loading...</span></p>
+
+<p><small>Or visit: <a href="{{ url }}">{{ url }}</a></small></p>
+
+<script>
+  const expireAt = new Date("{{ expire_time }}");  // From Python
+  const maxCountdownSeconds = 5 * 60; // 5 minutes in seconds
+  const countdownEl = document.getElementById("countdown");
+
+  function updateCountdown() {
+    const now = new Date();
+    let diff = Math.floor((expireAt - now) / 1000);
+
+    // Clamp to 5-minute max for display
+    diff = Math.min(diff, maxCountdownSeconds);
+
+    const minutes = String(Math.floor(diff / 60)).padStart(2, '0');
+    const seconds = String(diff % 60).padStart(2, '0');
+    countdownEl.textContent = `${minutes}:${seconds}`;
+
+    if (diff > 0) {
+      setTimeout(updateCountdown, 1000);
+    } else {
+      countdownEl.textContent = "Expired";
+    }
+  }
+
+  updateCountdown();
+</script>
+{% endblock %}
