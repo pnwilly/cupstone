@@ -10,7 +10,7 @@
   <form method="post" action="/api/method/cupstone.attendance.api.send_otp.send_otp" id="otp-form">
     <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
     <input type="hidden" name="token" value="{{ token }}">
-    
+
     <label>Enter Member ID</label><br>
     <input type="text" name="member_id" required><br><br>
     <button type="submit">Send OTP</button>
