@@ -243,9 +243,5 @@ app_license = "mit"
 # }
 
 scheduler_events = {
-    "cron": {
-        "*/5 * * * *": [
-            "cupstone.attendance.utils.token_generator.generate_checkin_token"
-        ]
-    }
+	"cron": {"*/5 * * * *": ["cupstone.attendance.utils.token_generator.generate_checkin_token"]}
 }
