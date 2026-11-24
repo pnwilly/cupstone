@@ -77,7 +77,10 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install MariaDB Client
-        run: sudo apt-get update && sudo apt-get install -y mariadb-client
+        run: |
+          sudo apt-get update && sudo apt-get install -y mariadb-client
+          # The service container has no TLS; newer clients require it by default.
+          printf '[client]\nskip-ssl\n' > ~/.my.cnf
 
       - name: Setup
         run: |
