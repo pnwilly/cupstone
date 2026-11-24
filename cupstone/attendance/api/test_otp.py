@@ -36,7 +36,9 @@ class TestCheckInOTP(FrappeTestCase):
 			send_otp(token=self.token, member_id="M-1")
 
 	def test_send_otp_rejects_an_expired_token(self):
-		frappe.db.set_value("Check-In Token", self.token, "expiry_time", now_datetime() - timedelta(minutes=1))
+		frappe.db.set_value(
+			"Check-In Token", self.token, "expiry_time", now_datetime() - timedelta(minutes=1)
+		)
 		with self.assertRaisesRegex(frappe.ValidationError, "Invalid or expired token"):
 			send_otp(token=self.token, member_id="M-1")
 
@@ -45,7 +47,9 @@ class TestCheckInOTP(FrappeTestCase):
 
 		verify_otp(token=self.token, member_id="M-1", otp=otp)
 
-		self.assertTrue(frappe.db.exists("Attendance Log", {"member_id": "M-1", "token": self.token, "docstatus": 1}))
+		self.assertTrue(
+			frappe.db.exists("Attendance Log", {"member_id": "M-1", "token": self.token, "docstatus": 1})
+		)
 		with self.assertRaisesRegex(frappe.ValidationError, "Invalid or expired OTP"):
 			verify_otp(token=self.token, member_id="M-1", otp=otp)
 
