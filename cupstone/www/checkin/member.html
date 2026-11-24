@@ -17,7 +17,7 @@
   </form>
 
   <div id="otp-section" style="display: none; margin-top: 20px;">
-    <form method="post" action="/api/method/cupstone.attendance.api.verify_otp" id="verify-form">
+    <form method="post" action="/api/method/cupstone.attendance.api.verify_otp.verify_otp" id="verify-form">
       <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
       <input type="hidden" name="token" value="{{ token }}">
       <input type="hidden" name="member_id" id="verify-member-id">
